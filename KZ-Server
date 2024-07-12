@@ -146,6 +146,13 @@
        {
          "download_detour": "direct",
          "format": "binary",
+         "tag": "geosite-private",
+         "type": "remote",
+         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs"
+       },
+       {
+         "download_detour": "direct",
+         "format": "binary",
          "tag": "geosite-ir",
          "type": "remote",
          "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ir.srs"
@@ -153,9 +160,44 @@
        {
          "download_detour": "direct",
          "format": "binary",
+         "tag": "geosite-cn",
+         "type": "remote",
+         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs"
+       },
+       {
+         "download_detour": "direct",
+         "format": "binary",
+         "tag": "geosite-vn",
+         "type": "remote",
+         "url": "https://github.com/Thaomtam/Geosite-vn/raw/rule-set/Geosite-vn.srs"
+       },
+       {
+         "download_detour": "direct",
+         "format": "binary",
+         "tag": "geoip-private",
+         "type": "remote",
+         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/private.srs"
+       },
+       {
+         "download_detour": "direct",
+         "format": "binary",
          "tag": "geoip-ir",
          "type": "remote",
          "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/ir.srs"
+       },
+       {
+         "download_detour": "direct",
+         "format": "binary",
+         "tag": "geoip-cn",
+         "type": "remote",
+         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
+       },
+       {
+         "download_detour": "direct",
+         "format": "binary",
+         "tag": "geoip-vn",
+         "type": "remote",
+         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/vn.srs"
        }
      ],
      "rules": [
@@ -181,7 +223,15 @@
        {
          "outbound": "block",
          "rule_set": [
-           "geosite-ads"
+           "geosite-ads",
+           "geoip-private",
+           "geosite-private",
+           "geosite-ir",
+           "geoip-ir",
+           "geoip-vn",
+           "geosite-vn",
+           "geoip-cn",
+           "geosite-cn"
          ]
        }
      ]
