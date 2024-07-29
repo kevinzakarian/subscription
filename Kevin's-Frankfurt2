@@ -28,7 +28,7 @@
      ],
      "servers": [
        {
-         "address": "tcp://8.8.8.8",
+         "address": "https://8.8.8.8/dns-query",
          "address_resolver": "local-dns",
          "detour": "proxy",
          "tag": "proxy-dns"
@@ -43,7 +43,7 @@
          "tag": "block"
        },
        {
-         "address": "tcp://8.8.8.8",
+         "address": "local",
          "detour": "direct",
          "tag": "direct-dns"
        }
@@ -110,10 +110,10 @@
      },
      {
        "obfs": {
-         "password": "iVPN.Pro-Niloofar-On0(hf$54%gFDet$%",
+         "password": "On0(hf$54%gFDet$%K5gf3",
          "type": "salamander"
        },
-       "password": "nFYnI1cQjs",
+       "password": "MScgdxgGEW",
        "server": "free2.iserver.store",
        "server_port": 44800,
        "tag": "iVPN.Pro-Niloofar",
