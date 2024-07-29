@@ -1,1 +1,176 @@
-dm1lc3M6Ly9ld29nSUNKaFpHUWlPaUFpTVRjNUxqWXhMakkxTVM0eU1UUWlMQW9nSUNKaGFXUWlPaUF3TEFvZ0lDSnBaQ0k2SUNJMk5qY3lOR05qWWkxbE5URmhMVFEyT1RFdFl6TmtaaTAzT0RWa1kyVXdNV0kxWlRFaUxBb2dJQ0p1WlhRaU9pQWlkR053SWl3S0lDQWljRzl5ZENJNklETTVOemd4TEFvZ0lDSndjeUk2SUNKMmJXVnpjeTB6T1RjNE1TRGltYjRpTEFvZ0lDSjBiSE1pT2lBaWJtOXVaU0lzQ2lBZ0luWWlPaUF5Q24wPQ==
+{
+   "dns": {
+     "final": "local-dns",
+     "rules": [
+       {
+         "clash_mode": "Global",
+         "server": "proxy-dns",
+         "source_ip_cidr": [
+           "172.19.0.0/30"
+         ]
+       },
+       {
+         "server": "proxy-dns",
+         "source_ip_cidr": [
+           "172.19.0.0/30"
+         ]
+       },
+       {
+         "clash_mode": "Direct",
+         "server": "direct-dns"
+       },
+       {
+         "rule_set": [
+           "geosite-ir"
+         ],
+         "server": "direct-dns"
+       }
+     ],
+     "servers": [
+       {
+         "address": "tcp://8.8.8.8",
+         "address_resolver": "local-dns",
+         "detour": "proxy",
+         "tag": "proxy-dns"
+       },
+       {
+         "address": "local",
+         "detour": "direct",
+         "tag": "local-dns"
+       },
+       {
+         "address": "rcode://success",
+         "tag": "block"
+       },
+       {
+         "address": "tcp://8.8.8.8",
+         "detour": "direct",
+         "tag": "direct-dns"
+       }
+     ],
+     "strategy": "prefer_ipv4"
+   },
+   "inbounds": [
+     {
+       "auto_route": true,
+       "endpoint_independent_nat": false,
+       "inet4_address": "172.19.0.1/30",
+       "mtu": 9000,
+       "platform": {
+         "http_proxy": {
+           "enabled": true,
+           "server": "127.0.0.1",
+           "server_port": 2080
+         }
+       },
+       "sniff": true,
+       "stack": "system",
+       "strict_route": false,
+       "type": "tun"
+     },
+     {
+       "listen": "127.0.0.1",
+       "listen_port": 2080,
+       "sniff": true,
+       "type": "mixed",
+       "users": []
+     }
+   ],
+   "outbounds": [
+     {
+       "outbounds": [
+         "auto",
+         "direct",
+         "vmess-39781"
+       ],
+       "tag": "proxy",
+       "type": "selector"
+     },
+     {
+       "interval": "10m",
+       "outbounds": [
+         "vmess-39781"
+       ],
+       "tag": "auto",
+       "tolerance": 50,
+       "type": "urltest",
+       "url": "http://www.gstatic.com/generate_204"
+     },
+     {
+       "tag": "direct",
+       "type": "direct"
+     },
+     {
+       "tag": "dns-out",
+       "type": "dns"
+     },
+     {
+       "tag": "block",
+       "type": "block"
+     },
+     {
+       "multiplex": {},
+       "server": "179.61.251.214",
+       "server_port": 39781,
+       "tag": "vmess-39781",
+       "tls": {},
+       "transport": {},
+       "type": "vmess",
+       "uuid": "66724ccb-e51a-4691-c3df-785dce01b5e1"
+     }
+   ],
+   "route": {
+     "auto_detect_interface": true,
+     "final": "proxy",
+     "rule_set": [
+       {
+         "download_detour": "direct",
+         "format": "binary",
+         "tag": "geosite-ads",
+         "type": "remote",
+         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs"
+       },
+       {
+         "download_detour": "direct",
+         "format": "binary",
+         "tag": "geosite-ir",
+         "type": "remote",
+         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ir.srs"
+       },
+       {
+         "download_detour": "direct",
+         "format": "binary",
+         "tag": "geoip-ir",
+         "type": "remote",
+         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/ir.srs"
+       }
+     ],
+     "rules": [
+       {
+         "clash_mode": "Direct",
+         "outbound": "direct"
+       },
+       {
+         "clash_mode": "Global",
+         "outbound": "proxy"
+       },
+       {
+         "outbound": "dns-out",
+         "protocol": "dns"
+       },
+       {
+         "outbound": "direct",
+         "rule_set": [
+           "geosite-ir",
+           "geoip-ir"
+         ]
+       },
+       {
+         "outbound": "block",
+         "rule_set": [
+           "geosite-ads"
+         ]
+       }
+     ]
+   }
+ }
