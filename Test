@@ -81,7 +81,7 @@
        "outbounds": [
          "auto",
          "direct",
-         "vmess-39781"
+         "hysteria2-43608"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -89,7 +89,7 @@
      {
        "interval": "10m",
        "outbounds": [
-         "vmess-39781"
+         "hysteria2-43608"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -109,14 +109,28 @@
        "type": "block"
      },
      {
-       "multiplex": {},
-       "server": "179.61.251.214",
-       "server_port": 39781,
-       "tag": "vmess-39781",
-       "tls": {},
-       "transport": {},
-       "type": "vmess",
-       "uuid": "66724ccb-e51a-4691-c3df-785dce01b5e1"
+       "obfs": {
+         "password": "db876638766cdsjseb78",
+         "type": "salamander"
+       },
+       "password": "kN67ES7OcV",
+       "server": "85.215.211.130",
+       "server_port": 43608,
+       "tag": "hysteria2-43608",
+       "tls": {
+         "ech": {
+           "config": [
+             "-----BEGIN ECH CONFIGS-----",
+             "AEn+DQBFAAAgACBhCI6jt4X6JaSNgiFABd8ADI80+smkdXMDr0zixuBgKwAIAAEA",
+             "AQABAAMAEmJhZDEuaXNlcnZlci5zdG9yZQAA",
+             "-----END ECH CONFIGS-----"
+           ]
+         },
+         "enabled": true,
+         "insecure": true,
+         "server_name": "bad1.iserver.store"
+       },
+       "type": "hysteria2"
      }
    ],
    "route": {
