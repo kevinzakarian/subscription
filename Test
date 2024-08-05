@@ -66,7 +66,7 @@
        "outbounds": [
          "auto",
          "direct",
-         "hysteria2-25751"
+         "iVPN.Pro-Shirin"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -74,7 +74,7 @@
      {
        "interval": "10m",
        "outbounds": [
-         "hysteria2-25751"
+         "iVPN.Pro-Shirin"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -95,18 +95,18 @@
      },
      {
        "obfs": {
-         "password": "F00kZaRePoUr",
+         "password": "iVPN.Pro-Shirin-Pk64%\u0026hjhfd\u0026%y64ydej",
          "type": "salamander"
        },
-       "password": "MbrxV2Cg0k",
+       "password": "QntxurbPxo",
        "server": "38.175.197.25",
-       "server_port": 25751,
-       "tag": "hysteria2-25751",
+       "server_port": 27678,
+       "tag": "iVPN.Pro-Shirin",
        "tls": {
          "ech": {
            "config": [
              "-----BEGIN ECH CONFIGS-----",
-             "ADn+DQA1AAAgACBeNZLDcHjtPLnXNRz6yEAMG6NOeASuhDArcHk//rghEQAIAAEA",
+             "ADn+DQA1AAAgACBDw64/p82aWaE/UfcbGaXrouDaP0gnSoY3PB8eJUzlVgAIAAEA",
              "AQABAAMAAicnAAA=",
              "-----END ECH CONFIGS-----"
            ]
