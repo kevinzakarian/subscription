@@ -43,7 +43,7 @@
          "tag": "block"
        },
        {
-         "address": "local",
+         "address": "tcp://8.8.8.8",
          "detour": "direct",
          "tag": "direct-dns"
        }
