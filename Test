@@ -14,16 +14,6 @@
          "source_ip_cidr": [
            "172.19.0.0/30"
          ]
-       },
-       {
-         "clash_mode": "Direct",
-         "server": "direct-dns"
-       },
-       {
-         "rule_set": [
-           "geosite-ir"
-         ],
-         "server": "direct-dns"
        }
      ],
      "servers": [
@@ -41,11 +31,6 @@
        {
          "address": "rcode://success",
          "tag": "block"
-       },
-       {
-         "address": "tcp://8.8.8.8",
-         "detour": "direct",
-         "tag": "direct-dns"
        }
      ],
      "strategy": "prefer_ipv4"
@@ -81,7 +66,7 @@
        "outbounds": [
          "auto",
          "direct",
-         "iVPN.Pro-Shirin"
+         "hysteria2-25751"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -89,7 +74,7 @@
      {
        "interval": "10m",
        "outbounds": [
-         "iVPN.Pro-Shirin"
+         "hysteria2-25751"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -109,20 +94,19 @@
        "type": "block"
      },
      {
-       "network": "tcp",
        "obfs": {
-         "password": "iVPN.Pro-Shirin-Pk64%\u0026hjhfd\u0026%y64ydej",
+         "password": "F00kZaRePoUr",
          "type": "salamander"
        },
-       "password": "QntxurbPxo",
+       "password": "MbrxV2Cg0k",
        "server": "38.175.197.25",
-       "server_port": 27678,
-       "tag": "iVPN.Pro-Shirin",
+       "server_port": 25751,
+       "tag": "hysteria2-25751",
        "tls": {
          "ech": {
            "config": [
              "-----BEGIN ECH CONFIGS-----",
-             "ADn+DQA1AAAgACDBZo+sa5olTMeGYSUeJetdLBZ1KgftmFTKS6iuw+CYZgAIAAEA",
+             "ADn+DQA1AAAgACBeNZLDcHjtPLnXNRz6yEAMG6NOeASuhDArcHk//rghEQAIAAEA",
              "AQABAAMAAicnAAA=",
              "-----END ECH CONFIGS-----"
            ]
@@ -136,29 +120,6 @@
    "route": {
      "auto_detect_interface": true,
      "final": "proxy",
-     "rule_set": [
-       {
-         "download_detour": "direct",
-         "format": "binary",
-         "tag": "geosite-ads",
-         "type": "remote",
-         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs"
-       },
-       {
-         "download_detour": "direct",
-         "format": "binary",
-         "tag": "geosite-ir",
-         "type": "remote",
-         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ir.srs"
-       },
-       {
-         "download_detour": "direct",
-         "format": "binary",
-         "tag": "geoip-ir",
-         "type": "remote",
-         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/ir.srs"
-       }
-     ],
      "rules": [
        {
          "clash_mode": "Direct",
@@ -171,19 +132,6 @@
        {
          "outbound": "dns-out",
          "protocol": "dns"
-       },
-       {
-         "outbound": "direct",
-         "rule_set": [
-           "geosite-ir",
-           "geoip-ir"
-         ]
-       },
-       {
-         "outbound": "block",
-         "rule_set": [
-           "geosite-ads"
-         ]
        }
      ]
    }
