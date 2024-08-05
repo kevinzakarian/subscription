@@ -115,14 +115,14 @@
          "type": "salamander"
        },
        "password": "QntxurbPxo",
-       "server": "23.95.236.81",
+       "server": "38.175.197.25",
        "server_port": 27678,
        "tag": "iVPN.Pro-Shirin",
        "tls": {
          "ech": {
            "config": [
              "-----BEGIN ECH CONFIGS-----",
-             "ADn+DQA1AAAgACDZB0RBsn5afv/ZrmVD46QcGPQMUWl2ZvfCkounBwl2RgAIAAEA",
+             "ADn+DQA1AAAgACDBZo+sa5olTMeGYSUeJetdLBZ1KgftmFTKS6iuw+CYZgAIAAEA",
              "AQABAAMAAicnAAA=",
              "-----END ECH CONFIGS-----"
            ]
