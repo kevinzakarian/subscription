@@ -14,11 +14,21 @@
          "source_ip_cidr": [
            "172.19.0.0/30"
          ]
+       },
+       {
+         "clash_mode": "Direct",
+         "server": "direct-dns"
+       },
+       {
+         "rule_set": [
+           "geosite-ir"
+         ],
+         "server": "direct-dns"
        }
      ],
      "servers": [
        {
-         "address": "tcp://8.8.8.8",
+         "address": "https://208.67.222.222/dns-query",
          "address_resolver": "local-dns",
          "detour": "proxy",
          "tag": "proxy-dns"
@@ -31,6 +41,11 @@
        {
          "address": "rcode://success",
          "tag": "block"
+       },
+       {
+         "address": "local",
+         "detour": "direct",
+         "tag": "direct-dns"
        }
      ],
      "strategy": "prefer_ipv4"
@@ -66,7 +81,7 @@
        "outbounds": [
          "auto",
          "direct",
-         "iVPN.Pro-Shirin"
+         "@KevinZakarian-iVPN.Pro"
        ],
        "tag": "proxy",
        "type": "selector"
@@ -74,7 +89,7 @@
      {
        "interval": "10m",
        "outbounds": [
-         "iVPN.Pro-Shirin"
+         "@KevinZakarian-iVPN.Pro"
        ],
        "tag": "auto",
        "tolerance": 50,
@@ -95,24 +110,17 @@
      },
      {
        "obfs": {
-         "password": "iVPN.Pro-Shirin-Pk64%\u0026hjhfd\u0026%y64ydej",
+         "password": "@KevinZakarian-iVPN.Pro",
          "type": "salamander"
        },
-       "password": "QntxurbPxo",
-       "server": "38.175.197.25",
-       "server_port": 27678,
-       "tag": "iVPN.Pro-Shirin",
+       "password": "5VXXwDddXP",
+       "server": "kevin.iserver.store",
+       "server_port": 443,
+       "tag": "@KevinZakarian-iVPN.Pro",
        "tls": {
-         "ech": {
-           "config": [
-             "-----BEGIN ECH CONFIGS-----",
-             "ADn+DQA1AAAgACBDw64/p82aWaE/UfcbGaXrouDaP0gnSoY3PB8eJUzlVgAIAAEA",
-             "AQABAAMAAicnAAA=",
-             "-----END ECH CONFIGS-----"
-           ]
-         },
          "enabled": true,
-         "insecure": true
+         "insecure": true,
+         "server_name": "www.google.com"
        },
        "type": "hysteria2"
      }
@@ -120,6 +128,43 @@
    "route": {
      "auto_detect_interface": true,
      "final": "proxy",
+     "rule_set": [
+       {
+         "download_detour": "direct",
+         "format": "binary",
+         "tag": "geosite-ads",
+         "type": "remote",
+         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs"
+       },
+       {
+         "download_detour": "direct",
+         "format": "binary",
+         "tag": "geosite-private",
+         "type": "remote",
+         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs"
+       },
+       {
+         "download_detour": "direct",
+         "format": "binary",
+         "tag": "geosite-ir",
+         "type": "remote",
+         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ir.srs"
+       },
+       {
+         "download_detour": "direct",
+         "format": "binary",
+         "tag": "geoip-private",
+         "type": "remote",
+         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/private.srs"
+       },
+       {
+         "download_detour": "direct",
+         "format": "binary",
+         "tag": "geoip-ir",
+         "type": "remote",
+         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/ir.srs"
+       }
+     ],
      "rules": [
        {
          "clash_mode": "Direct",
@@ -132,6 +177,21 @@
        {
          "outbound": "dns-out",
          "protocol": "dns"
+       },
+       {
+         "outbound": "direct",
+         "rule_set": [
+           "geosite-ir",
+           "geoip-ir"
+         ]
+       },
+       {
+         "outbound": "block",
+         "rule_set": [
+           "geosite-ads",
+           "geosite-private",
+           "geoip-private"
+         ]
        }
      ]
    }
